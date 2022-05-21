@@ -1,0 +1,16 @@
+server:
+    context-path: /springboot-hsqldb
+    port: 9091
+spring:
+    datasource:
+        driver-class-name: org.hsqldb.jdbcDriver
+        password: tony
+        url: jdbc:hsqldb:file:D:\test\amdocs
+        username: tony
+    h2:
+        console:
+            enabled: true
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true
