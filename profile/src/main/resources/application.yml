@@ -1,6 +1,8 @@
 server:
     context-path: /springboot-hsqldb
     port: 9091
+    application:
+        name: userProfile-service
 spring:
     datasource:
         driver-class-name: org.hsqldb.jdbcDriver
@@ -10,7 +12,7 @@ spring:
     h2:
         console:
             enabled: true
-    jpa:
+    jpa        :
         hibernate:
             ddl-auto: update
         show-sql: true

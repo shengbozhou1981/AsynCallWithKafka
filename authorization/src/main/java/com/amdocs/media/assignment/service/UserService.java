@@ -1,6 +1,7 @@
 package com.amdocs.media.assignment.service;
 
 import com.amdocs.media.assignment.entity.User;
+import com.amdocs.media.assignment.entity.UserProfile;
 
 import java.util.List;
 
@@ -20,4 +21,5 @@ import java.util.List;
         public void deleteById(Integer userId);
         public User findByUsernameAndPassword(String username, String password);
 
-    }
+        public void createUserProfile(UserProfile profile);
+}

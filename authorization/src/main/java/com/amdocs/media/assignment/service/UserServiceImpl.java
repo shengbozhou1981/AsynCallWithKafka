@@ -2,6 +2,8 @@ package com.amdocs.media.assignment.service;
 
 import com.amdocs.media.assignment.dao.CredentialsDao;
 import com.amdocs.media.assignment.entity.User;
+import com.amdocs.media.assignment.entity.UserProfile;
+import com.amdocs.media.assignment.openFein.UserProfileFeignClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,8 @@ import java.util.List;
 public class UserServiceImpl implements UserService{
     @Autowired
     private CredentialsDao credentialsDao;
+    @Autowired
+    private UserProfileFeignClient UserProfileFeignClient;
 
     @Override
     public User save(User user) {
@@ -45,5 +49,10 @@ public class UserServiceImpl implements UserService{
     @Override
     public User findByUsernameAndPassword(String username, String password) {
         return credentialsDao.findByUsernameAndPassword(username, password);
+    }
+
+    @Override
+    public void createUserProfile(UserProfile profile) {
+        this.UserProfileFeignClient.saveProfile(profile);
     }
 }
