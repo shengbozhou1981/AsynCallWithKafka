@@ -50,7 +50,13 @@ spring:
                 enable: true
     application:
         name: authorization-service
-
+    redis:
+        host: 127.0.0.1
+        port: 6379
+        password:
+    cache:
+        cache-names: tony
+        type       : redis
 eureka:
     client:
         serviceUrl:

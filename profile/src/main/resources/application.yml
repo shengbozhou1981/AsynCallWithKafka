@@ -20,7 +20,7 @@ spring:
         loadbalancer:
             ribbon:
                 enable: true
-    kafka      :
+    kafka:
         bootstrap-servers: 127.0.0.1:9092 #here you can define the cluster
         producer:
             key-serializer  : org.apache.kafka.common.serialization.StringSerializer
@@ -45,6 +45,13 @@ spring:
         client-id: kafkacli
         listener:
             ack-mode: manual_immediate
+#    redis:
+#        host: localhost
+#        port: 6379
+#        password:
+#    cache:
+#        cache-names: tony
+#        type       : redis
 eureka:
     client:
         serviceUrl:

@@ -9,6 +9,7 @@ import com.amdocs.media.assignment.vo.ResultVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +23,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("authorization")
 @Slf4j
+@EnableRedisHttpSession
 public class CredentialsController {
 
     @Autowired

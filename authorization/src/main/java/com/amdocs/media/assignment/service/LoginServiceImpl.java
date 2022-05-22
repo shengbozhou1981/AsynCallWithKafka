@@ -5,6 +5,7 @@ import com.amdocs.media.assignment.util.ResultVoUtil;
 import com.amdocs.media.assignment.vo.ResultVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -13,13 +14,15 @@ import javax.servlet.http.HttpSession;
 
 @Service
 @Slf4j
+@CacheConfig(cacheNames = "tony")
 public class LoginServiceImpl implements LoginService{
     @Autowired
     HttpServletRequest request;
     @Autowired
     private UserService userservice;
-    @Override
 
+
+    @Override
     public ResponseEntity<ResultVo> login(User user) {
         HttpSession session = request.getSession();
         String username= user.getUsername();
