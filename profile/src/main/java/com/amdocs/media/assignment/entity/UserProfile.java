@@ -13,8 +13,8 @@ import javax.persistence.GenerationType;
 public class UserProfile {
     @javax.persistence.Id
     @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    private Integer id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
     @Column(unique=true)
     private Integer userId;
     private String address;

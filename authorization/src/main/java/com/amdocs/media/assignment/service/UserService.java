@@ -22,4 +22,8 @@ import java.util.List;
         public User findByUsernameAndPassword(String username, String password);
 
         public void createUserProfile(UserProfile profile);
+
+        public void updateUserProfile(UserProfile profile);
+
+        public void deleteUserProfile(Integer userId);
 }

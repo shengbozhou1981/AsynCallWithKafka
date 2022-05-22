@@ -5,7 +5,7 @@ import com.amdocs.media.assignment.entity.UserProfile;
 import java.util.List;
 
 public interface UserProfileService {
-    public UserProfile save(UserProfile userProfile);
+    public boolean save(UserProfile userProfile);
     public UserProfile findByUserId(Integer userId);
     public List<UserProfile> findAll();
 

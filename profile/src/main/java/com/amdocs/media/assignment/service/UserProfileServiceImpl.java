@@ -14,9 +14,18 @@ public class UserProfileServiceImpl implements UserProfileService{
     @Autowired
     private UserProfileDao userProfileDao;
     @Override
-    public UserProfile save(UserProfile userProfile) {
+    public boolean save(UserProfile userProfile) {
 
-        return userProfileDao.save(userProfile);
+
+        UserProfile currentUserProfile = userProfileDao.findByUserId(userProfile.getUserId());
+
+        if (currentUserProfile != null && currentUserProfile.getUserId() == userProfile.getUserId()) {
+            userProfile.setId(currentUserProfile.getId());
+            userProfileDao.save(userProfile);
+            return true;
+        }
+
+        return false;
     }
 
     @Override

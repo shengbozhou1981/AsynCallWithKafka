@@ -27,15 +27,9 @@ public class UserProfileController {
 
     @PutMapping("/updateProfile")
     public String updateProfile( @RequestBody UserProfile userProfile){
-
-            UserProfile currentUserProfile = userProfileService.findByUserId(userProfile.getUserId());
-            if (currentUserProfile != null) {
-//                userProfile.setId(currentUserProfile.getId());
-
-                UserProfile save = userProfileService.save(userProfile);
-                if (save !=null) return "save success";
-            }
-        return "save failed";
+                Boolean save = userProfileService.save(userProfile);
+                if (save) return "save success";
+                return "save failed";
     }
 
     @DeleteMapping("/deleteProfile/{userId}")

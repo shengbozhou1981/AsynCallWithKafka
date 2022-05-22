@@ -84,4 +84,13 @@ public class CredentialsController {
         userservice.createUserProfile(profile);
     }
 
+    @PutMapping("/updateProfile")
+    public void updateUserProfile(@RequestBody UserProfile profile){
+        userservice.updateUserProfile(profile);
+    }
+
+    @DeleteMapping("/deleteProfile/{userId}")
+    public void  deleteById(@PathVariable("userId") Integer userId){
+        userservice.deleteUserProfile(userId);
+    }
 }

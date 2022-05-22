@@ -55,4 +55,14 @@ public class UserServiceImpl implements UserService{
     public void createUserProfile(UserProfile profile) {
         this.userProfileFeignClient.saveProfile(profile);
     }
+
+    @Override
+    public void updateUserProfile(UserProfile profile) {
+        this.userProfileFeignClient.updateProfile(profile);
+    }
+
+    @Override
+    public void deleteUserProfile(Integer userId) {
+        this.userProfileFeignClient.deleteById(userId);
+    }
 }
