@@ -11,9 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.concurrent.FailureCallback;
 import org.springframework.util.concurrent.SuccessCallback;
 
-import java.util.concurrent.Executors;
-
-
 @Service
 @Slf4j
 public class KafkaProducer implements CommandLineRunner {
@@ -25,7 +22,7 @@ public class KafkaProducer implements CommandLineRunner {
 
         log.info("sending message='{}' to topic='{}'", message, topic);
         kafkaTemplate.send(topic, message)
-                .addCallback(new SuccessCallback<SendResult<String, String>>() {
+                .addCallback(new SuccessCallback<SendResult<String, String>>() { //add call back for asyn
                     @Override
                     public void onSuccess(SendResult<String, String> result) {
                         if (null != result.getRecordMetadata()) {
@@ -41,13 +38,6 @@ public class KafkaProducer implements CommandLineRunner {
                     }
                 });
     }
-//
-/*    public void sendToKafkaStandardMessage(String message) {
-        log.info("sending message='{}' to topic='{}'", message, topicName);
-        //
-        ProducerRecord<String, String> record = new ProducerRecord<String, String>(topicName, message);
-        kafkaTemplate.send(record);
-    }*/
 
     @Override
     public void run(String... args) throws Exception {

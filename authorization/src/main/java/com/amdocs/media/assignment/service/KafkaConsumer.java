@@ -15,20 +15,14 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 import java.util.regex.Pattern;
 
-/**
- * 监听Kafka Topic,从里面取数据
- **/
 @Service
 @Slf4j
 public class KafkaConsumer {
-
-
     @Autowired
     private UserProfileFeignClient userProfileFeignClient;
     @Autowired
     private UpdateAndDeleteProfileService service;
     @Autowired
-//    private UserProfile userProfile;
 
     private static Gson gson = new GsonBuilder().create();
     /**
@@ -37,6 +31,7 @@ public class KafkaConsumer {
      */
     @KafkaListener(topics = "test")
     public void receiveMessageFromKafka(ConsumerRecord<?, ?> record, Acknowledgment ack) {
+
         System.out.println("topic: "+record.topic() + " offset: " +record.offset() + " message: " + record.value());
         log.info("receive new message :{}", String.valueOf(record.value()));
         Object message = record.value();
@@ -49,11 +44,8 @@ public class KafkaConsumer {
             UserProfile updateUserProfile = (UserProfile) JSON.parseObject(record.value().toString(), UserProfile.class);
             this.service.updateProfile(updateUserProfile);
         }
-
         ack.acknowledge();
-
     }
-
 
 
 

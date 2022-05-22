@@ -1,17 +1,12 @@
 package com.amdocs.media.assignment.interceptor;
 
-import com.amdocs.media.assignment.entity.User;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.kafka.common.errors.ApiException;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.xml.ws.RequestWrapper;
 import java.io.PrintWriter;
-
-import static com.sun.xml.internal.ws.api.message.Packet.State.ServerResponse;
 
 /**
  * @Author: Tony Zhou
@@ -23,10 +18,10 @@ import static com.sun.xml.internal.ws.api.message.Packet.State.ServerResponse;
 public class UserLoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        System.out.println("执行了拦截器的preHandle方法");
+        System.out.println("enter request interceptor");
         try {
             HttpSession session = request.getSession();
-            //统一拦截（查询当前session是否存在user）(这里user会在每次登录成功后，写入session)
+            //check whether the session has user attribute, everytime login, will set the user into session
             Object user = session.getAttribute("user");
             if (user == null) {
                 response.reset();

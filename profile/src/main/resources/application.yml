@@ -25,3 +25,14 @@ eureka:
     client:
         serviceUrl:
             defaultZone: http://localhost:8001/eureka/
+async:
+    executor:
+        thread:
+            core_pool_size: 15 #核心线程数量，线程池创建时候初始化的线程数
+            max_pool_size: 15 #最大线程数，只有在缓冲队列满了之后才会申请超过核心线程数的线程
+            queue_capacity: 99999 #缓冲队列，用来缓冲执行任务的队列
+            keep_alive_seconds: 60 #当超过了核心线程出之外的线程在空闲时间到达之后会被销毁
+            await_termination_seconds: 30 #设置线程池中任务的等待时间，如果超过这个时候还没有销毁就强制销毁，以确保应用最后能够被关闭，而不是阻塞住。
+            name:
+                prefix: async-service-
+                prefixson: async-service-son

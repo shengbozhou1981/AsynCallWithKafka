@@ -3,9 +3,12 @@ package com.amdocs.media.assignment.controller;
 import com.amdocs.media.assignment.dao.CredentialsDao;
 import com.amdocs.media.assignment.entity.User;
 import com.amdocs.media.assignment.entity.UserProfile;
+import com.amdocs.media.assignment.service.LoginService;
 import com.amdocs.media.assignment.service.UserService;
+import com.amdocs.media.assignment.vo.ResultVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +28,8 @@ public class CredentialsController {
     private UserService userservice;
     @Autowired
     HttpServletRequest request;
+    @Autowired
+    private LoginService loginservice;
 
     @RequestMapping("/initialize")
     public String initialize(){
@@ -54,22 +59,8 @@ public class CredentialsController {
     }
 
     @RequestMapping("/login")
-    public String  login(@RequestBody User user) throws Exception {
-        HttpSession session = request.getSession();
-
-        String str = "";
-        String username= user.getUsername();
-        String password= user.getPassword();
-        User credentials = userservice.findByUsernameAndPassword(username, password);
-
-        if (username !=null && password !=null){
-            if (credentials.getUsername().equals(username) && credentials.getPassword().equals(password)){} {
-                session.setAttribute("user",credentials);
-                log.info(session.getAttribute("user").toString());
-                return "login successfully, welcome back " + username;
-            }
-        }
-        return "not login yet, please login first";
+    public ResponseEntity<ResultVo> login(@RequestBody User user) throws Exception {
+        return this.loginservice.login(user);
     }
 
     @RequestMapping("/logout")

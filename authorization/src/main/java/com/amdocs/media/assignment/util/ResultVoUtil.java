@@ -19,6 +19,14 @@ public class ResultVoUtil {
         return resultVo;
     }
 
+    public static ResultVo notAuthenticated(){
+        ResultVo resultVo = new ResultVo();
+        resultVo.setCode(-1);
+        resultVo.setMsg("not login yet, please login first");
+        resultVo.setData(null);
+        return resultVo;
+    }
+
     public static ResultVo nullPointer(Object data){
         ResultVo resultVo = new ResultVo();
         resultVo.setCode(-1);
@@ -27,18 +35,11 @@ public class ResultVoUtil {
         return resultVo;
     }
 
-    public static ResultVo productException(Object data){
-        ResultVo resultVo = new ResultVo();
-        resultVo.setCode(-1);
-        resultVo.setMsg("product related exception");
-        resultVo.setData(data);
-        return resultVo;
-    }
 
-    public static ResultVo orderException(Object data){
+    public static ResultVo notExistException(Object data){
         ResultVo resultVo = new ResultVo();
         resultVo.setCode(-1);
-        resultVo.setMsg("order related exception");
+        resultVo.setMsg("");
         resultVo.setData(data);
         return resultVo;
     }
