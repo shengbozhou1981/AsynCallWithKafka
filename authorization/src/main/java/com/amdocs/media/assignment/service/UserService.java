@@ -28,4 +28,8 @@ import java.util.List;
         public void deleteUserProfile(Integer userId);
 
         public UserProfile asynUpdateUserProfile(UserProfile profile);
+
+        public List<UserProfile> findAllProfile();
+
+        public void deleteAllProfile();
 }

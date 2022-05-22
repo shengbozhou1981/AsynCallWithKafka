@@ -86,4 +86,14 @@ public class CredentialsController {
 
         userservice.deleteUserProfile(userId);
     }
+
+    @GetMapping("/findAllProfile")
+    public List<UserProfile> findAllProfile(){
+        return  userservice.findAllProfile();
+    }
+
+    @DeleteMapping("/deleteAllProfile")
+    public void  deleteAll(){
+        userservice.deleteAllProfile();
+    }
 }

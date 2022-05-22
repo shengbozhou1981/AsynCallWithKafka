@@ -73,4 +73,14 @@ public class UserServiceImpl implements UserService{
         profile.setId(userProfileByUserId.getId());
         return  profile;
     }
+
+    @Override
+    public List<UserProfile> findAllProfile() {
+        return this.userProfileFeignClient.find();
+    }
+
+    @Override
+    public void deleteAllProfile() {
+        this.userProfileFeignClient.deleteAll();
+    }
 }

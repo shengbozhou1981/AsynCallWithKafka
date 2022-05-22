@@ -27,6 +27,7 @@ spring:
             allowed-origins:
               - "http://localhost:9091"
               - "http://localhost:9092"
+              - "http://localhost:9093"
             allowed-headers: "*"
             allowed-methods: "*"
             max-age: 3600

@@ -1,4 +1,4 @@
-package com.amdocs.media.assignment.interceptor;
+package com.amdocs.media.assignment.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;

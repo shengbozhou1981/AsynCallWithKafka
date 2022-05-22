@@ -4,6 +4,8 @@ import com.amdocs.media.assignment.entity.UserProfile;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @FeignClient(name="userProfile-Service")
 public interface UserProfileFeignClient {
@@ -19,12 +21,10 @@ public interface UserProfileFeignClient {
     @PutMapping("/profile/updateProfile")
     public String updateProfile( @RequestBody UserProfile userProfile);
 
+    @GetMapping("/profile/findAll")
+    public List<UserProfile> find();
 
-
-//    public List<UserProfile> findAll();
-//
-//
-//    public void deleteAll();
-
+    @DeleteMapping("/profile/deleteAll")
+    public void  deleteAll();
 
 }
