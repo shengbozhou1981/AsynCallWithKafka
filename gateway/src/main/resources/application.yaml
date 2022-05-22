@@ -30,3 +30,8 @@ spring:
             allowed-headers: "*"
             allowed-methods: "*"
             max-age: 3600
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8001/eureka/

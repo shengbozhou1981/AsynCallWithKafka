@@ -17,7 +17,7 @@ import java.util.List;
 
         public UserProfile findByUserId(Integer userId);
 
-        public void deleteAll();
+        public void deleteAllInBatch();
 
         public void deleteByUserId(Integer userId);
 }

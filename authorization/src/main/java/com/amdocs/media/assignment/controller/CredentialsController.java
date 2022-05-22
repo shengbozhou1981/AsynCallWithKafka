@@ -25,8 +25,6 @@ public class CredentialsController {
     private UserService userservice;
     @Autowired
     HttpServletRequest request;
-//    @Autowired
-//    HttpServletResponse response;
 
     @RequestMapping("/initialize")
     public String initialize(){
@@ -80,8 +78,9 @@ public class CredentialsController {
         session.removeAttribute("user");
         return "logout successfully";
     }
-    @PostMapping()
+    @PostMapping("/createProfile")
     public void createUserProfile(@RequestBody UserProfile profile) {
+
         userservice.createUserProfile(profile);
     }
 

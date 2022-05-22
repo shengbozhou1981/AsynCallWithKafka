@@ -5,7 +5,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
 
-@FeignClient("userProfile-service")
+@FeignClient(name="userProfile-Service")
 public interface UserProfileFeignClient {
     @PostMapping("/profile/saveProfile")
     public String saveProfile(@RequestBody UserProfile userProfile);

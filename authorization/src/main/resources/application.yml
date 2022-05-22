@@ -1,8 +1,6 @@
 server:
     context-path: /springboot-hsqldb
     port: 9093
-    application:
-        name: authorization-service
 spring:
     datasource:
         driver-class-name: org.hsqldb.jdbcDriver
@@ -37,8 +35,15 @@ spring:
             key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
             value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 
-    spring:
-        cloud:
-            loadbalancer:
-                ribbon:
-                    enable: true
+
+    cloud:
+        loadbalancer:
+            ribbon:
+                enable: true
+    application:
+        name: authorization-service
+
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8001/eureka/

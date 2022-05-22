@@ -1,8 +1,6 @@
 server:
     context-path: /springboot-hsqldb
     port: 9091
-    application:
-        name: userProfile-service
 spring:
     datasource:
         driver-class-name: org.hsqldb.jdbcDriver
@@ -16,3 +14,14 @@ spring:
         hibernate:
             ddl-auto: update
         show-sql: true
+    application:
+        name: userProfile-Service
+    cloud:
+        loadbalancer:
+            ribbon:
+                enable: true
+
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8001/eureka/

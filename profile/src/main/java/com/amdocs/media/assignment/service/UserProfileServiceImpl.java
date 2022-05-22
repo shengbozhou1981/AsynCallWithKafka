@@ -15,6 +15,7 @@ public class UserProfileServiceImpl implements UserProfileService{
     private UserProfileDao userProfileDao;
     @Override
     public UserProfile save(UserProfile userProfile) {
+
         return userProfileDao.save(userProfile);
     }
 
@@ -32,7 +33,7 @@ public class UserProfileServiceImpl implements UserProfileService{
 
     @Override
     public void deleteAll() {
-        userProfileDao.deleteAll();
+        userProfileDao.deleteAllInBatch();
     }
 
     @Override

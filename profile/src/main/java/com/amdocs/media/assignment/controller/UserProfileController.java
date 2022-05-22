@@ -30,7 +30,7 @@ public class UserProfileController {
 
             UserProfile currentUserProfile = userProfileService.findByUserId(userProfile.getUserId());
             if (currentUserProfile != null) {
-                userProfile.setId(currentUserProfile.getId());
+//                userProfile.setId(currentUserProfile.getId());
 
                 UserProfile save = userProfileService.save(userProfile);
                 if (save !=null) return "save success";

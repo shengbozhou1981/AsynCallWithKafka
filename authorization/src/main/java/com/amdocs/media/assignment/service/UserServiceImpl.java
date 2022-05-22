@@ -14,7 +14,7 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private CredentialsDao credentialsDao;
     @Autowired
-    private UserProfileFeignClient UserProfileFeignClient;
+    private UserProfileFeignClient userProfileFeignClient;
 
     @Override
     public User save(User user) {
@@ -53,6 +53,6 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void createUserProfile(UserProfile profile) {
-        this.UserProfileFeignClient.saveProfile(profile);
+        this.userProfileFeignClient.saveProfile(profile);
     }
 }
