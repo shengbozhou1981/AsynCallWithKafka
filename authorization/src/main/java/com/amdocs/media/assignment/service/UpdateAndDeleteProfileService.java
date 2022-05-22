@@ -20,13 +20,13 @@ public class UpdateAndDeleteProfileService {
 
 
     @Async("asyncServiceExecutor")
-    @CachePut
+//    @CachePut
     public void updateProfile(UserProfile userProfile) {
         this.userProfileFeignClient.updateProfile(userProfile);
         }
 
     @Async("asyncServiceExecutor")
-    @CacheEvict
+//    @CacheEvict
     public void deleteProfile(Integer userId) {
         this.userProfileFeignClient.deleteById(userId);
     }

@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 @Slf4j
 @Transactional
-@CacheConfig(cacheNames = "tony")
+//@CacheConfig(cacheNames = "tony")
 public class UserProfileServiceImpl implements UserProfileService{
     @Autowired
     private UserProfileDao userProfileDao;
@@ -33,13 +33,13 @@ public class UserProfileServiceImpl implements UserProfileService{
     }
 
     @Override
-    @Cacheable
+//    @Cacheable
     public UserProfile findByUserId(Integer userId) {
         return userProfileDao.findByUserId(userId);
     }
 
     @Override
-    @Cacheable
+//    @Cacheable
     public List<UserProfile> findAll() {
         return userProfileDao.findAll();
     }

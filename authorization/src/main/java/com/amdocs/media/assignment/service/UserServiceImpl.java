@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@CacheConfig(cacheNames = "tony")
+//@CacheConfig(cacheNames = "tony")
 public class UserServiceImpl implements UserService{
     @Autowired
     private CredentialsDao credentialsDao;
@@ -27,19 +27,19 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    @Cacheable
+//    @Cacheable
     public User findById(Integer userId) {
         return credentialsDao.findById(userId).get();
     }
 
     @Override
-    @Cacheable
+//    @Cacheable
     public List<User> findAll() {
         return credentialsDao.findAll();
     }
 
     @Override
-    @CachePut
+//    @CachePut
     public User update(User user) {
         if (user.getId() != null) {
             User userById = credentialsDao.findById(user.getId()).get();
@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    @CacheEvict
+//    @CacheEvict
     public void deleteById(Integer userId) {
         if(credentialsDao.findById(userId)!=null)
             credentialsDao.deleteById(userId);
@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    @Cacheable
+//    @Cacheable
     public User findByUsernameAndPassword(String username, String password) {
         return credentialsDao.findByUsernameAndPassword(username, password);
     }
@@ -67,19 +67,19 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    @CachePut
+//    @CachePut
     public void updateUserProfile(UserProfile profile) {
         this.userProfileFeignClient.updateProfile(profile);
     }
 
     @Override
-    @CacheEvict
+//    @CacheEvict
     public void deleteUserProfile(Integer userId) {
         this.userProfileFeignClient.deleteById(userId);
     }
 
     @Override
-    @CachePut
+//    @CachePut
     public UserProfile asynUpdateUserProfile(UserProfile profile) {
         Integer userId = profile.getUserId();
         UserProfile userProfileByUserId = this.userProfileFeignClient.findByUserId(userId);
@@ -88,13 +88,13 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    @Cacheable
+//    @Cacheable
     public List<UserProfile> findAllProfile() {
         return this.userProfileFeignClient.find();
     }
 
     @Override
-    @CacheEvict
+//    @CacheEvict
     public void deleteAllProfile() {
         this.userProfileFeignClient.deleteAll();
     }

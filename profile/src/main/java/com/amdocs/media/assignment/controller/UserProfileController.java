@@ -43,6 +43,7 @@ public class UserProfileController {
 
     @GetMapping("/findAll")
     public List<UserProfile> find(){
+
         return  userProfileService.findAll();
     }
 

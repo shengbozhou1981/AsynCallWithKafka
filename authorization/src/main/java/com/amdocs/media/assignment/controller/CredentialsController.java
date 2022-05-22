@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -52,6 +53,11 @@ public class CredentialsController {
     public List<User> find(){
 
         return (List<User>) userservice.findAll();
+    }
+    @DeleteMapping("/deleteById/{id}")
+    public void delete(@PathVariable("id") Integer id){
+
+        userservice.deleteById(id);
     }
 
     @RequestMapping("/findById/{userId}")

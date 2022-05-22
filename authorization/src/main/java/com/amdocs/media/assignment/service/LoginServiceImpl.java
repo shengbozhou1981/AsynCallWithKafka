@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 @Service
 @Slf4j
-@CacheConfig(cacheNames = "tony")
+//@CacheConfig(cacheNames = "tony")
 public class LoginServiceImpl implements LoginService{
     @Autowired
     HttpServletRequest request;
