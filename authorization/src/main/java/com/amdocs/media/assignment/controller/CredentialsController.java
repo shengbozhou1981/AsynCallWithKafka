@@ -86,6 +86,7 @@ public class CredentialsController {
 
     @PutMapping("/updateProfile")
     public void updateUserProfile(@RequestBody UserProfile profile){
+
         userservice.updateUserProfile(profile);
     }
 

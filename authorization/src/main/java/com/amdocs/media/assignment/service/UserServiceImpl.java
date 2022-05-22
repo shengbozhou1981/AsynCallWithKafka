@@ -65,4 +65,12 @@ public class UserServiceImpl implements UserService{
     public void deleteUserProfile(Integer userId) {
         this.userProfileFeignClient.deleteById(userId);
     }
+
+    @Override
+    public UserProfile asynUpdateUserProfile(UserProfile profile) {
+        Integer userId = profile.getUserId();
+        UserProfile userProfileByUserId = this.userProfileFeignClient.findByUserId(userId);
+        profile.setId(userProfileByUserId.getId());
+        return  profile;
+    }
 }

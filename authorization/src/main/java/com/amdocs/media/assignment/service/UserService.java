@@ -26,4 +26,6 @@ import java.util.List;
         public void updateUserProfile(UserProfile profile);
 
         public void deleteUserProfile(Integer userId);
+
+        public UserProfile asynUpdateUserProfile(UserProfile profile);
 }
