@@ -5,18 +5,18 @@ import com.amdocs.media.assignment.entity.UserProfile;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 @Slf4j
+@Transactional
 public class UserProfileServiceImpl implements UserProfileService{
     @Autowired
     private UserProfileDao userProfileDao;
     @Override
     public boolean save(UserProfile userProfile) {
-
-
         UserProfile currentUserProfile = userProfileDao.findByUserId(userProfile.getUserId());
 
         if (currentUserProfile != null && currentUserProfile.getUserId() == userProfile.getUserId()) {
@@ -24,8 +24,8 @@ public class UserProfileServiceImpl implements UserProfileService{
             userProfileDao.save(userProfile);
             return true;
         }
-
-        return false;
+        userProfileDao.save(userProfile);
+        return true;
     }
 
     @Override

@@ -21,7 +21,7 @@ public class KafkaProducer implements CommandLineRunner {
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
-    public void sendToKafkaNormalMessage(String topic,String message) {
+    public void sendToKafkaNormalMessage(String topic,String  message) {
 
         log.info("sending message='{}' to topic='{}'", message, topic);
         kafkaTemplate.send(topic, message)

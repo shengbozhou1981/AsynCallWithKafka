@@ -1,5 +1,6 @@
 package com.amdocs.media.assignment.service;
 
+import com.alibaba.fastjson.JSON;
 import com.amdocs.media.assignment.entity.UserProfile;
 import com.amdocs.media.assignment.openFein.UserProfileFeignClient;
 import com.google.gson.Gson;
@@ -12,6 +13,7 @@ import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 /**
  * 监听Kafka Topic,从里面取数据
@@ -35,16 +37,21 @@ public class KafkaConsumer {
      */
     @KafkaListener(topics = "test")
     public void receiveMessageFromKafka(ConsumerRecord<?, ?> record, Acknowledgment ack) {
-/*        log.info("receive new message :{}", String.valueOf(record.value()));
+        System.out.println("topic: "+record.topic() + " offset: " +record.offset() + " message: " + record.value());
+        log.info("receive new message :{}", String.valueOf(record.value()));
+        Object message = record.value();
         Optional<?> kafkaMessage = Optional.ofNullable(record.value());
+        Pattern pattern = Pattern.compile("^[-\\+]?[\\d]*$");
 
-        if (kafkaMessage.isPresent())  {
-//            service.updateProfile(userProfile);
+        if(kafkaMessage.isPresent() &&  pattern.matcher(message.toString()).matches() ){
+            this.service.deleteProfile(Integer.parseInt(message.toString()));
+        } else {
+            UserProfile updateUserProfile = (UserProfile) JSON.parseObject(record.value().toString(), UserProfile.class);
+            this.service.updateProfile(updateUserProfile);
         }
-        ack.acknowledge();*/
-        System.out.println(record.topic());
-        System.out.println(record.offset());
-        System.out.println(record.value());
+
+        ack.acknowledge();
+
     }
 
 

@@ -25,7 +25,7 @@ spring:
             key-serializer  : org.apache.kafka.common.serialization.StringSerializer
             value-serializer: org.apache.kafka.common.serialization.StringSerializer
             acks            : 1
-            retries         : 2
+            retries         : 0
             batch-size      : 16384
             buffer-memory   : 33554432
             compression-type: gzip #压缩格式

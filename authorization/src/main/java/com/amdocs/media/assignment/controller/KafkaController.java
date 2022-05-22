@@ -1,5 +1,6 @@
 package com.amdocs.media.assignment.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.amdocs.media.assignment.entity.User;
 import com.amdocs.media.assignment.entity.UserProfile;
 import com.amdocs.media.assignment.service.KafkaProducer;
@@ -34,20 +35,18 @@ public class KafkaController {
         return ResponseEntity.ok(ResultVoUtil.success("test success"));
     }
 
-    @PostMapping("/updateProfile")
+    @PutMapping("/updateProfile")
     public ResponseEntity<ResultVo> updateProfile(@RequestBody UserProfile profile){
 
         UserProfile updateUserProfile = userservice.asynUpdateUserProfile(profile);
-        this.kafkaProducer.sendToKafkaNormalMessage("test",updateUserProfile.toString());
-//        kafkaTemplate.send("test", updateUserProfile.toString());
+        this.kafkaProducer.sendToKafkaNormalMessage("test", JSON.toJSONString(updateUserProfile));
         return ResponseEntity.ok(ResultVoUtil.success("test success"));
     }
 
-    @PostMapping("/deleteProfileByUserId/{userId}")
+    @DeleteMapping("/deleteProfileByUserId/{userId}")
     public ResponseEntity<ResultVo> deleteProfileByUserId(@PathVariable("userId") Integer userId){
 
         this.kafkaProducer.sendToKafkaNormalMessage("test",userId.toString());
-//        kafkaTemplate.send("test", updateUserProfile.toString());
         return ResponseEntity.ok(ResultVoUtil.success("test success"));
     }
 }

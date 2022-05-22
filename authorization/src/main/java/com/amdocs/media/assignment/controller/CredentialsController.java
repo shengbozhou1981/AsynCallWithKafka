@@ -92,6 +92,7 @@ public class CredentialsController {
 
     @DeleteMapping("/deleteProfile/{userId}")
     public void  deleteById(@PathVariable("userId") Integer userId){
+
         userservice.deleteUserProfile(userId);
     }
 }
