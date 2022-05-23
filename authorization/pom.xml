@@ -23,19 +23,9 @@
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.vaadin.external.google</groupId>
-            <artifactId>android-json</artifactId>
-            <version>0.0.20131108.vaadin1</version>
-            <scope>compile</scope>
-        </dependency>
+
         <!--openFeign dependency-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -48,19 +38,20 @@
             <version>2.0.0.RELEASE</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
+<!--
+        &lt;!&ndash; https://mvnrepository.com/artifact/redis.clients/jedis &ndash;&gt;
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
             <version>4.2.2</version>
         </dependency>
-        <!--      for  redisson distributed lock-->
+        &lt;!&ndash;      for  redisson distributed lock&ndash;&gt;
         <dependency>
             <groupId>org.redisson</groupId>
             <artifactId>redisson-spring-boot-starter</artifactId>
             <version>3.10.6</version>
         </dependency>
-<!--    redis for session sharing and coashing-->
+&lt;!&ndash;    redis for session sharing and coashing&ndash;&gt;
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-cache</artifactId>
@@ -69,10 +60,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+-->
 
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -91,19 +79,13 @@
             <version>1.6.6</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
-        <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-            <version>4.2.2</version>
-        </dependency>
         <!--      for  redisson distributed lock-->
         <dependency>
             <groupId>org.redisson</groupId>
             <artifactId>redisson-spring-boot-starter</artifactId>
             <version>3.10.6</version>
         </dependency>
-        <!--redis-->
+<!--        &lt;!&ndash;redis&ndash;&gt;
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
@@ -112,6 +94,26 @@
         <dependency>
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-data-redis</artifactId>
+        </dependency>-->
+        <!--    Data validation-->
+<!--        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>5.2.4.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>2.0.1.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging</artifactId>
+            <version>3.4.1.Final</version>
+        </dependency>-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
 
     </dependencies>

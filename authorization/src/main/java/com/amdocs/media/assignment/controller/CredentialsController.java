@@ -1,30 +1,28 @@
 package com.amdocs.media.assignment.controller;
 
-import com.amdocs.media.assignment.dao.CredentialsDao;
 import com.amdocs.media.assignment.entity.User;
 import com.amdocs.media.assignment.entity.UserProfile;
 import com.amdocs.media.assignment.service.LoginService;
 import com.amdocs.media.assignment.service.UserService;
 import com.amdocs.media.assignment.vo.ResultVo;
+import io.micrometer.core.instrument.config.validate.Validated;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
+
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.criteria.CriteriaBuilder;
+
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.sql.Wrapper;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 @RestController
 @RequestMapping("authorization")
 @Slf4j
-@EnableRedisHttpSession
+//@EnableRedisHttpSession
 public class CredentialsController {
 
     @Autowired
@@ -78,7 +76,7 @@ public class CredentialsController {
         return "logout successfully";
     }
     @PostMapping("/createProfile")
-    public ResponseEntity<ResultVo> createUserProfile(@RequestBody UserProfile profile) {
+    public ResponseEntity<ResultVo> createUserProfile(@RequestBody UserProfile profile, BindingResult bindingResult) {
 
         return userservice.createUserProfile(profile);
     }

@@ -6,7 +6,6 @@ import com.amdocs.media.assignment.utils.ResultVoUtil;
 import com.amdocs.media.assignment.vo.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,12 +13,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("profile")
-@EnableRedisHttpSession
+//@EnableRedisHttpSession
 public class UserProfileController {
     @Autowired
     private UserProfileService userProfileService;
-    @Autowired
-    HttpServletRequest request;
+//    @Autowired
+//    HttpServletRequest request;
 
     @PostMapping("/saveProfile")
     public ResponseEntity<ResultVo> saveProfile(@RequestBody UserProfile userProfile){

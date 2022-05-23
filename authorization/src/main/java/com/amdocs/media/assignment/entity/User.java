@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import java.io.Serializable;
 
+
+
 @Entity
 @Data
 public class User implements Serializable {
@@ -15,6 +17,7 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+//    @NotEmpty("username is mandatory")
     private String username;
     private String password;
 
