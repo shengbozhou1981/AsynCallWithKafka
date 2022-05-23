@@ -24,7 +24,7 @@ import java.util.List;
 @Transactional
 //@CacheConfig(cacheNames = "tony")
 public class UserProfileServiceImpl implements UserProfileService{
-    @Resource
+    @Autowired
     private UserProfileDao userProfileDao;
     @Autowired
     HttpServletRequest request;

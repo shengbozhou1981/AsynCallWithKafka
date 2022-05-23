@@ -5,9 +5,11 @@ import com.amdocs.media.assignment.service.UserProfileService;
 import com.amdocs.media.assignment.utils.ResultVoUtil;
 import com.amdocs.media.assignment.vo.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
@@ -15,10 +17,12 @@ import java.util.List;
 @RequestMapping("profile")
 //@EnableRedisHttpSession
 public class UserProfileController {
+//    @Autowired
+//    @Qualifier("UserProfileDao")
     @Autowired
     private UserProfileService userProfileService;
-//    @Autowired
-//    HttpServletRequest request;
+    @Autowired
+    HttpServletRequest request;
 
     @PostMapping("/saveProfile")
     public ResponseEntity<ResultVo> saveProfile(@RequestBody UserProfile userProfile){
