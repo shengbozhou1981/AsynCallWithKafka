@@ -3,23 +3,23 @@ server:
 spring:
   application:
     name: gateway
-  cloud:
-    gateway:
-      discovery:
+  cloud      :
+    gateway     :
+      discovery :
         locator:
           enabled: true
-      routes:
-        - id: assignment-authorization
-          uri: http://localhost:9093
+      routes    :
+        - id        : assignment-authorization
+          uri       : http://localhost:9093
           predicates:
             - Path=/assignment-authorization/**
-          filters:
+          filters   :
             - StripPrefix=1
-        - id: assignment-profile
-          uri: http://localhost:9091
+        - id        : assignment-profile
+          uri       : http://localhost:9091
           predicates:
             - Path=/assignment-profile/**
-          filters:
+          filters   :
             - StripPrefix=1
       globalcors:
         cors-configurations:
@@ -30,8 +30,11 @@ spring:
               - "http://localhost:9093"
             allowed-headers: "*"
             allowed-methods: "*"
-            max-age: 3600
-
+            max-age        : 3600
+            
+    loadbalancer:
+      ribbon:
+        enabled: true
 eureka:
   client:
     serviceUrl:

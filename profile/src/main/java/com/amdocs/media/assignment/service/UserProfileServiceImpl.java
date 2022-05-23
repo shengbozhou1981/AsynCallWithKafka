@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -23,7 +24,7 @@ import java.util.List;
 @Transactional
 //@CacheConfig(cacheNames = "tony")
 public class UserProfileServiceImpl implements UserProfileService{
-    @Autowired
+    @Resource
     private UserProfileDao userProfileDao;
     @Autowired
     HttpServletRequest request;

@@ -2,6 +2,7 @@ package com.amdocs.media.assignment.dao;
 
 import com.amdocs.media.assignment.entity.UserProfile;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
      * @date 2022-05-20
      */
     @Repository
+    @Component
     public interface UserProfileDao extends JpaRepository<UserProfile, Integer> {
 
         public UserProfile findByUserId(Integer userId);
