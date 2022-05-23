@@ -1,6 +1,8 @@
 package com.amdocs.media.assignment.service;
 
 import com.amdocs.media.assignment.entity.UserProfile;
+import com.amdocs.media.assignment.vo.ResultVo;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -12,5 +14,5 @@ public interface UserProfileService {
 
     public void deleteAll();
 
-    public void deleteByUserId(Integer userId);
+    public ResponseEntity<ResultVo> deleteByUserId(Integer userId);
 }

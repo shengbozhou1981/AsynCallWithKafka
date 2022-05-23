@@ -78,9 +78,9 @@ public class CredentialsController {
         return "logout successfully";
     }
     @PostMapping("/createProfile")
-    public void createUserProfile(@RequestBody UserProfile profile) {
+    public ResponseEntity<ResultVo> createUserProfile(@RequestBody UserProfile profile) {
 
-        userservice.createUserProfile(profile);
+        return userservice.createUserProfile(profile);
     }
 
     @PutMapping("/updateProfile")

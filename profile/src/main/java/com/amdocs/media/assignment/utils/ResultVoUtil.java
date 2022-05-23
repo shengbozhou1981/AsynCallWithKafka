@@ -1,4 +1,4 @@
-package com.amdocs.media.assignment.util;
+package com.amdocs.media.assignment.utils;
 
 import com.amdocs.media.assignment.vo.ResultVo;
 
@@ -11,11 +11,11 @@ public class ResultVoUtil {
         return resultVo;
     }
 
-    public static ResultVo fail(Object data){
+    public static ResultVo fail(){
         ResultVo resultVo = new ResultVo();
         resultVo.setCode(-1);
         resultVo.setMsg("fail");
-        resultVo.setData(data);
+        resultVo.setData(null);
         return resultVo;
     }
 
@@ -36,10 +36,10 @@ public class ResultVoUtil {
     }
 
 
-    public static ResultVo notExistException(Object data){
+    public static ResultVo userProfileException(Object data){
         ResultVo resultVo = new ResultVo();
         resultVo.setCode(-1);
-        resultVo.setMsg("");
+        resultVo.setMsg("userProfile exception");
         resultVo.setData(data);
         return resultVo;
     }

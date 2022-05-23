@@ -2,6 +2,8 @@ package com.amdocs.media.assignment.service;
 
 import com.amdocs.media.assignment.entity.User;
 import com.amdocs.media.assignment.entity.UserProfile;
+import com.amdocs.media.assignment.vo.ResultVo;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -21,7 +23,7 @@ import java.util.List;
         public void deleteById(Integer userId);
         public User findByUsernameAndPassword(String username, String password);
 
-        public void createUserProfile(UserProfile profile);
+        public ResponseEntity<ResultVo> createUserProfile(UserProfile profile);
 
         public void updateUserProfile(UserProfile profile);
 

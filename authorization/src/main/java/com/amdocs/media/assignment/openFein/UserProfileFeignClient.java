@@ -1,7 +1,9 @@
 package com.amdocs.media.assignment.openFein;
 
 import com.amdocs.media.assignment.entity.UserProfile;
+import com.amdocs.media.assignment.vo.ResultVo;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,7 +12,7 @@ import java.util.List;
 @FeignClient(name="userProfile-Service")
 public interface UserProfileFeignClient {
     @PostMapping("/profile/saveProfile")
-    public String saveProfile(@RequestBody UserProfile userProfile);
+    public ResponseEntity<ResultVo> saveProfile(@RequestBody UserProfile userProfile);
 
     @GetMapping("/profile/findByUserId/{userId}")
     public UserProfile  findByUserId(@PathVariable("userId") Integer userId);

@@ -32,6 +32,9 @@ public class LoginServiceImpl implements LoginService{
         if (username !=null && password !=null){
             if (credentials.getUsername().equals(username) && credentials.getPassword().equals(password)){} {
                 session.setAttribute("user",credentials);
+                session.setAttribute("loginId",credentials.getId());
+                Integer loginId = (Integer) session.getAttribute("loginId");
+                System.out.println(loginId);
                 log.info(session.getAttribute("user").toString());
                 return ResponseEntity.ok(ResultVoUtil.success("login successfully, welcome back " + username));
             }

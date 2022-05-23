@@ -2,7 +2,10 @@ package com.amdocs.media.assignment.controller;
 
 import com.amdocs.media.assignment.entity.UserProfile;
 import com.amdocs.media.assignment.service.UserProfileService;
+import com.amdocs.media.assignment.utils.ResultVoUtil;
+import com.amdocs.media.assignment.vo.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,9 +22,10 @@ public class UserProfileController {
     HttpServletRequest request;
 
     @PostMapping("/saveProfile")
-    public String saveProfile(@RequestBody UserProfile userProfile){
-        userProfileService.save(userProfile);
-        return "ok";
+    public ResponseEntity<ResultVo> saveProfile(@RequestBody UserProfile userProfile){
+        if(userProfileService.save(userProfile))
+            return ResponseEntity.ok(ResultVoUtil.success("Save profile success"));
+        return ResponseEntity.ok(ResultVoUtil.success("Save failed"));
     }
 
     @PutMapping("/updateProfile")
@@ -32,8 +36,9 @@ public class UserProfileController {
     }
 
     @DeleteMapping("/deleteProfile/{userId}")
-    public void  deleteById(@PathVariable("userId") Integer userId){
-         userProfileService.deleteByUserId(userId);
+    public ResponseEntity<ResultVo>  deleteById(@PathVariable("userId") Integer userId){
+
+        return userProfileService.deleteByUserId(userId);
     }
 
     @GetMapping("/findByUserId/{userId}")

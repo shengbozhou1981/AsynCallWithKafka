@@ -4,11 +4,13 @@ import com.amdocs.media.assignment.dao.CredentialsDao;
 import com.amdocs.media.assignment.entity.User;
 import com.amdocs.media.assignment.entity.UserProfile;
 import com.amdocs.media.assignment.openFein.UserProfileFeignClient;
+import com.amdocs.media.assignment.vo.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -62,8 +64,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void createUserProfile(UserProfile profile) {
-        this.userProfileFeignClient.saveProfile(profile);
+    public ResponseEntity<ResultVo> createUserProfile(UserProfile profile) {
+        return this.userProfileFeignClient.saveProfile(profile);
     }
 
     @Override
