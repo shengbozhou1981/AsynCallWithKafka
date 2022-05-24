@@ -18,7 +18,7 @@ public interface UserProfileFeignClient {
     public UserProfile  findByUserId(@PathVariable("userId") Integer userId);
 
     @DeleteMapping("/profile/deleteProfile/{userId}")
-    public void  deleteById(@PathVariable("userId") Integer userId);
+    public ResponseEntity<ResultVo>  deleteById(@PathVariable("userId") Integer userId);
 
     @PutMapping("/profile/updateProfile")
     public String updateProfile( @RequestBody UserProfile userProfile);

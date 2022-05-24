@@ -22,6 +22,7 @@ public class UpdateAndDeleteProfileService {
     @Async("asyncServiceExecutor")
 //    @CachePut
     public void updateProfile(UserProfile userProfile) {
+
         this.userProfileFeignClient.updateProfile(userProfile);
         }
 

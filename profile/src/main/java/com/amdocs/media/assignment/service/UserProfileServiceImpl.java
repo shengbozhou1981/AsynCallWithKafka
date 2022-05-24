@@ -63,13 +63,13 @@ public class UserProfileServiceImpl implements UserProfileService{
     }
 
     @Override
-    public ResponseEntity<ResultVo> deleteByUserId(Integer userId) {
+    public boolean deleteByUserId(Integer userId) {
         UserProfile userProfile = userProfileDao.findByUserId(userId);
 //        boolean existsById = userProfileDao.existsById(userId);
         if(userProfile!=null) {
             userProfileDao.deleteByUserId(userId);
-            return ResponseEntity.ok(ResultVoUtil.success("Delete profile success"));
+            return true;
         }
-        return ResponseEntity.ok(ResultVoUtil.success(UserProfileEnum.PROFILE_NOT_EXIST));
+        return false;
     }
 }

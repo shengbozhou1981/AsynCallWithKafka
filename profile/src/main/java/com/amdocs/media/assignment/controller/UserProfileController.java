@@ -32,16 +32,18 @@ public class UserProfileController {
     }
 
     @PutMapping("/updateProfile")
-    public String updateProfile( @RequestBody UserProfile userProfile){
+    public ResponseEntity<ResultVo> updateProfile( @RequestBody UserProfile userProfile){
                 Boolean save = userProfileService.save(userProfile);
-                if (save) return "save success";
-                return "save failed";
+                if (save) return ResponseEntity.ok(ResultVoUtil.success("update profile success"));
+        return ResponseEntity.ok(ResultVoUtil.success("update failed"));
     }
 
     @DeleteMapping("/deleteProfile/{userId}")
     public ResponseEntity<ResultVo>  deleteById(@PathVariable("userId") Integer userId){
-
-        return userProfileService.deleteByUserId(userId);
+        boolean deleteByUserId = userProfileService.deleteByUserId(userId);
+        if(deleteByUserId)
+            return ResponseEntity.ok(ResultVoUtil.success("delete profile success"));
+        return ResponseEntity.ok(ResultVoUtil.success("delete failed"));
     }
 
     @GetMapping("/findByUserId/{userId}")

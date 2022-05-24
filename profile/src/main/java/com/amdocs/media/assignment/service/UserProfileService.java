@@ -14,5 +14,5 @@ public interface UserProfileService {
 
     public void deleteAll();
 
-    public ResponseEntity<ResultVo> deleteByUserId(Integer userId);
+    public boolean deleteByUserId(Integer userId);
 }
