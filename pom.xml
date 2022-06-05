@@ -8,11 +8,12 @@
         <version>2.3.0.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.amdocs.media.assignment</groupId>
-    <artifactId>amdocsassignment</artifactId>
+    <groupId>com.tony.demo</groupId>
+    <artifactId>AsynCallWithKafkaDemo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>amdocsassignment</name>
+    <name>AsynCallWithKafkaDemo</name>
     <description>Demo project for Spring Boot</description>
+    <packaging>jar</packaging>
     <properties>
         <java.version>1.8</java.version>
     </properties>

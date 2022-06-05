@@ -1,11 +1,11 @@
 server:
     context-path: /springboot-hsqldb
-    port: 9093
+    port: 9090
 spring:
     datasource:
         driver-class-name: org.hsqldb.jdbcDriver
         password: tony
-        url: jdbc:hsqldb:file:D:\test\amdocs-credentials
+        url: jdbc:hsqldb:file:D:\test\demo-credentials
         username: tony
     h2:
         console:

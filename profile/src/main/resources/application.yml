@@ -5,7 +5,7 @@ spring:
     datasource:
         driver-class-name: org.hsqldb.jdbcDriver
         password: tony
-        url: jdbc:hsqldb:file:D:\test\amdocs
+        url: jdbc:hsqldb:file:D:\test\tony-profile
         username: tony
     h2:
         console:
@@ -29,29 +29,29 @@ spring:
             retries         : 0
             batch-size      : 16384
             buffer-memory   : 33554432
-            compression-type: gzip #压缩格式
+            compression-type: gzip
         consumer:
-            auto-offset-reset: earliest #最早未被消费的offset
-            enable-auto-commit: false #是否开启自动提交
-            #auto-commit-interval: 1000 #自动提交的时间间隔
-            key-deserializer: org.apache.kafka.common.serialization.StringDeserializer #key解码方式
-            value-deserializer: org.apache.kafka.common.serialization.StringDeserializer #value解码方式
+            auto-offset-reset: earliest
+            enable-auto-commit: false
+            #auto-commit-interval: 1000
+            key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+            value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
             group-id: kafka.consumer.group.id.1
             max-poll-records: 50
             properties:
-                session-timeout-ms: 20000 #连接超时时间
-                max-poll-interval-ms: 15000 #手动提交设置与poll的心跳数,如果消息队列中没有消息，等待毫秒后，调用poll()方法。如果队列中有消息，立即消费消息，每次消费的消息的多少可以通过max.poll.records配置。
-                max-partition-fetch-bytes: 15728640 #设置拉取数据的大小 15M
+                session-timeout-ms: 20000
+                max-poll-interval-ms: 15000
+                max-partition-fetch-bytes: 15728640
         client-id: kafkacli
         listener:
             ack-mode: manual_immediate
-#    redis:
-#        host: localhost
-#        port: 6379
-#        password:
-#    cache:
-#        cache-names: tony
-#        type       : redis
+    redis:
+        host: localhost
+        port: 6379
+        password:
+    cache:
+        cache-names: tony
+        type       : redis
 eureka:
     client:
         serviceUrl:

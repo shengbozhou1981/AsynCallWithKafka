@@ -1,5 +1,5 @@
 server:
-    port: 9090
+    port: 9080
 spring:
     application:
         name: gateway
@@ -7,7 +7,7 @@ spring:
         gateway:
             discovery:
                 locator:
-                    enabled: true
+                  enabled: true
             routes:
                 - id: assignment-authorization
                   uri: 'http://localhost:9093'
